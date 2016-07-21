@@ -14,9 +14,21 @@
 	  			<form>
 					<label id="label-1">Name:</label>
 					<input type="text" class="form control" name="nomeexterno" id="nome"/>
-	  				<button id="enviar" class="btn btn-default">Enviar</button>
+					<div class="btn-group">
+	  					<button id="enviar" class="btn btn-default">Enviar Frase</button>
+	  					<button id="listar" class="btn btn-default">Listar Pessoas</button>
+	  				</div>
 	  			</form>
-	  			<div id="resultado"></div>
+	  			<div class="panel panel-default">
+	  				<div class="panel-heading">Frase digitada</div>
+	  				<div class="panel-body" id="resultado"></div>
+	  			</div>	
+	  			<div class="panel panel-default">	
+	  			<div class="panel-heading">Lista de Pessoas Cadastradas</div>
+	  				<div class="panel-body" id="pessoas">
+	  					<ul id="ul"></ul>
+	  				</div>
+	  			</div>	
 	  		</div>
 	  		<div class="panel-footer"></div>
 		</div>
@@ -28,6 +40,17 @@
 		var nomeexterno = $("#nome").val();
 		$.get('\ajax',{nome:nomeexterno},function(responseText){
 			$('#resultado').text(responseText);
+		});
+		event.preventDefault();
+	});
+</script>
+<script>
+	$("#listar").on("click",function(event){
+		$.get('\pessoas',function(response){
+			$("#ul").empty();
+			$.each(response,function(index,item){
+				$("<li>").text(item.nome).appendTo($("#ul"));
+			});
 		});
 		event.preventDefault();
 	});
