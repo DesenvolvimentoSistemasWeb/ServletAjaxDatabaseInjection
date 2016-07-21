@@ -26,7 +26,7 @@
 <script>
 	$("#enviar").on("click",function(event){
 		var nomeexterno = $("#nome").val();
-		$.get('ajax',{nome:nomeexterno},function(responseText){
+		$.get('\ajax',{nome:nomeexterno},function(responseText){
 			$('#resultado').text(responseText);
 		});
 		event.preventDefault();
