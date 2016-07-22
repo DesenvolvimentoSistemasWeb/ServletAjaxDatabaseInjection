@@ -7,6 +7,19 @@
   <version>0.0.1-SNAPSHOT</version>
   <name>servletAjax Maven Webapp</name>
   <url>http://maven.apache.org</url>
+
+  <!-- Suports to Java EE 6.0 specification -->
+  <dependencyManagement>
+  	<dependencies>
+	  	<dependency>
+  			<groupId>org.jboss.spec</groupId>
+  			<artifactId>jboss-javaee-6.0</artifactId>
+  			<version>3.0.2.Final</version>
+  			<type>pom</type>
+  		</dependency>
+  	</dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -21,7 +34,7 @@
         <artifactId>jboss-servlet-api_3.0_spec</artifactId>
         <version>1.0.2.Final</version>
     </dependency>
-    <dependency>
+ 	<dependency>
         <groupId>org.jboss.spec.javax.servlet.jsp</groupId>
         <artifactId>jboss-jsp-api_2.2_spec</artifactId>
         <version>1.0.2.Final</version>
@@ -30,14 +43,15 @@
         <groupId>org.jboss.spec.javax.servlet.jstl</groupId>
         <artifactId>jboss-jstl-api_1.2_spec</artifactId>
         <version>1.0.2.Final</version>
-    </dependency>
- 
- 	<!-- Xalan dependencies -->
+    </dependency>    
+ 	
+ 	
+  	<!-- Xalan dependencies -->
  	<dependency>
  		<groupId>xalan</groupId>
  		<artifactId>xalan</artifactId>
  		<version>2.7.1</version>
- 	</dependency>
+ 	</dependency>	
  	
  	<!-- Google json -->
  	<dependency>
@@ -45,6 +59,14 @@
  		<artifactId>gson</artifactId>
  		<version>2.2.2</version>
  	</dependency>
+
+    <!-- java ee -7 -->
+    <dependency>
+    	<groupId>javax</groupId>
+    	<artifactId>javaee-api</artifactId>
+    	<version>7.0</version>
+    </dependency>
+ 	
   </dependencies>
   <build>
      <finalName>${project.artifactId}</finalName>
