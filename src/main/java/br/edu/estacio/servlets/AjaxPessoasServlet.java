@@ -1,6 +1,8 @@
 package br.edu.estacio.servlets;
 
 import java.io.IOException;
+
+import javax.inject.Inject;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,16 +22,14 @@ public class AjaxPessoasServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
     
 	private Gson gson = new Gson();
-	private Pessoas pessoas = new Pessoas();
+	
+	@Inject Pessoas pessoas;
 	
     /**
      * @see HttpServlet#HttpServlet()
      */
     public AjaxPessoasServlet() {
         super();
-        pessoas.addPessoa(new Pessoa("Alan Castro Maia"));
-        pessoas.addPessoa(new Pessoa("Fulano Ciclano da Silva"));
-        pessoas.addPessoa(new Pessoa("Erika Lúcia do Castro Mello"));
 
         // TODO Auto-generated constructor stub
     }
@@ -38,6 +38,10 @@ public class AjaxPessoasServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        pessoas.getPessoas().clear();
+		pessoas.addPessoa(new Pessoa("Alan Castro Maia"));
+        pessoas.addPessoa(new Pessoa("Fulano Ciclano da Silva"));
+        pessoas.addPessoa(new Pessoa("Erika Lúcia do Castro Mello"));
         String jsonList = gson.toJson(pessoas.getPessoas());
 		
 		response.setContentType("application/json");

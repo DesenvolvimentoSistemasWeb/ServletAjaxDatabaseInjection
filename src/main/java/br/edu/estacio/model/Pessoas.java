@@ -2,6 +2,9 @@ package br.edu.estacio.model;
 
 import java.util.ArrayList;
 
+import javax.ejb.Stateless;
+
+@Stateless
 public class Pessoas {
 
 	private ArrayList<Pessoa> pessoas = new ArrayList<Pessoa>();
