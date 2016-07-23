@@ -1,13 +1,18 @@
 package br.edu.estacio.model;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Pessoa {
 
-	private String nome;
-
-	public Pessoa(String nome){
-		this.nome=nome;
-	}
+	@Id
+	@GeneratedValue
+	private Long id;
 	
+	private String nome;
+		
 	public String getNome() {
 		return nome;
 	}
@@ -15,7 +20,6 @@ public class Pessoa {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
 	
 	
 }

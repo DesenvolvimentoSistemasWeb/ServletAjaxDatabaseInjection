@@ -1,23 +1,31 @@
 package br.edu.estacio.servlets;
 
 import java.io.IOException;
+
+import javax.ejb.EJB;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import br.edu.estacio.services.PessoasService;
+
 /**
- * Servlet implementation class AjaxServlet
+ * Servlet implementation class AjaxPessoasDeleteServlet
  */
-@WebServlet(value="/ajax")
-public class AjaxServlet extends HttpServlet {
+@WebServlet(value="/delete")
+public class AjaxPessoasDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
+	
+	@EJB
+	private PessoasService pessoasService;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AjaxServlet() {
+    public AjaxPessoasDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,17 +34,16 @@ public class AjaxServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String nome = request.getParameter("nome");
-		response.setContentType("text/plain");
-		response.setCharacterEncoding("UTF-8");
-		response.getWriter().write(nome);
+		// TODO Auto-generated method stub
+		pessoasService.removePessoas();
 	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		// TODO Auto-generated method stub
+		doGet(request, response);
 	}
 
 }
