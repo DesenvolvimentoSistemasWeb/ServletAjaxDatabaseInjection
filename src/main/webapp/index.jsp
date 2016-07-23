@@ -15,12 +15,13 @@
 					<label id="label-1">Name:</label>
 					<input type="text" class="form control" name="nomeexterno" id="nome"/>
 					<div class="btn-group">
-	  					<button id="enviar" class="btn btn-default">Enviar Frase</button>
+	  					<button id="enviar" class="btn btn-default">Cadastrar Pessoa</button>
 	  					<button id="listar" class="btn btn-default">Listar Pessoas</button>
+	  					<button id="limpar" class="btn btn-default">Limpar Lista</button>
 	  				</div>
 	  			</form>
 	  			<div class="panel panel-default">
-	  				<div class="panel-heading">Frase digitada</div>
+	  				<div class="panel-heading">Pessoa cadastrada</div>
 	  				<div class="panel-body" id="resultado"></div>
 	  			</div>	
 	  			<div class="panel panel-default">	
@@ -51,6 +52,14 @@
 			$.each(response,function(index,item){
 				$("<li>").text(item.nome).appendTo($("#ul"));
 			});
+		});
+		event.preventDefault();
+	});
+</script>
+<script>
+	$("#limpar").on("click",function(event){
+		$.get('\delete',function(response){
+			$("#ul").empty();
 		});
 		event.preventDefault();
 	});
